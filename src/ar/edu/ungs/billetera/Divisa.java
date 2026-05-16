@@ -11,13 +11,10 @@ public class Divisa extends Inversion {
     }
 
     @Override
-    public double calcularResultado() {
+    public double calcularResultado(Cuenta cuenta) {
         if (esPrecancelado()) return 0;
-        
-        // Obtenemos la cotización actual usando la clase Utilitarios provista por la cátedra
+
         double cotizacionActual = Utilitarios.consultarCotizacion(monedaReferencia);
-        
-        // Lógica de ejemplo: (Monto * Tasa) * Cotización
-        return (getMonto() * tasa) * cotizacionActual;
+        return (getMonto() * tasa * plazo) * cotizacionActual;
     }
 }

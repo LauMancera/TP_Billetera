@@ -9,11 +9,8 @@ public class RentaFija extends Inversion {
     }
 
     @Override
-    public double calcularResultado() {
-        if (esPrecancelado()) {
-            return 0; // Si se precancela, generalmente se pierde el interés (o se aplica una penalidad)
-        }
-        // Cálculo básico de interés simple: Monto * Tasa
-        return getMonto() * tasaInteres; 
+    public double calcularResultado(Cuenta cuenta) {
+        if (esPrecancelado()) return 0;
+        return getMonto() * tasaInteres * plazo;
     }
 }

@@ -8,6 +8,7 @@ public class Usuario {
     private String nombre;
     private String direccion;
     private Map<String, Cuenta> cuentas;
+    private double totalInvertido;
 
     public Usuario(String dni, String nombre, String direccion) {
         this.dni = dni;
@@ -17,6 +18,9 @@ public class Usuario {
     }
 
     public void agregarCuenta(Cuenta cuenta) {
+        if (!cuenta.getDni().equals(this.dni)) {
+            throw new IllegalArgumentException("El DNI de la cuenta no coincide con el usuario.");
+        }
         cuentas.put(cuenta.getCvu(), cuenta);
     }
 
@@ -26,6 +30,12 @@ public class Usuario {
 
     public Map<String, Cuenta> getCuentas() {
         return cuentas;
+    }
+    public double getTotalInvertido() { 
+    	return totalInvertido; 
+    	}
+    public void agregarInversion(double monto) {
+        totalInvertido += monto;
     }
 
     public String getDni() {

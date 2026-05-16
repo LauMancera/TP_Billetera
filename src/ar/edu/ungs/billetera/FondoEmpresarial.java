@@ -7,9 +7,12 @@ public class FondoEmpresarial extends Inversion {
     }
 
     @Override
-    public double calcularResultado() {
+    public double calcularResultado(Cuenta cuenta) {
         if (esPrecancelado()) return 0;
-        // Supongamos un retorno fijo agresivo para el fondo empresarial a modo de ejemplo
-        return getMonto() * 0.15; 
+        return getMonto() * 0.08;
+    }
+    @Override
+    public boolean esPrecancelable() {
+        return false;
     }
 }

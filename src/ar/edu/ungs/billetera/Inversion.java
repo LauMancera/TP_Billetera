@@ -19,9 +19,15 @@ public abstract class Inversion extends Operacion {
     public boolean esPrecancelado() {
         return precancelada;
     }
+    public boolean esPrecancelable() {
+        return true;
+    }
+    public int getPlazo() {
+        return plazo;
+    }
 
     // Método polimórfico crucial: cada subtipo de inversión calcula su retorno distinto
-    public abstract double calcularResultado();
+    public abstract double calcularResultado(Cuenta cuenta);
 
     @Override
     public String obtenerTipo() {
